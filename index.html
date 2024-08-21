@@ -33,7 +33,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
         /* Style the popup image container */
         #popupImageContainer {
-            background-color: white;
+			background-color: white;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -55,11 +55,64 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
             cursor: pointer;
             border-radius: 5px;
         }
+		.popupOverlay {
+			display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure the popup is above other content */}
+        /* Style the popup image container */
+        .popupImageContainer {
+			background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Style the image */
+        .popupImage {
+			max-width: 100%;
+            height: auto;
+		}
+        /* Style the close button */
+		
+        #popupOverlay1 .closeButton {
+			margin-top: 10px;
+            padding: 10,px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;;
+        }
+
+		#popupOverlay2 .closeButton {
+			margin-top: 10px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;;
+        }
+		#popupOverlay3 .closeButton {
+			margin-top: 10px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;;
+        }
+
+
 
         /* Style for when popup is open to prevent background interaction */
-        .blur {
-            filter: blur(5px);
-        }
 img.wp-smiley,
 img.emoji {
 	display: inline !important;
@@ -300,11 +353,11 @@ body.custom-background { background-color: #0b2746; }
 			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="300" height="110" src="https://molino.cafe/wp-content/uploads/2022/07/terraza-300x110.png" class="vc_single_image-img attachment-medium" alt="" decoding="async" loading="lazy" title="terraza" srcset="https://molino.cafe/wp-content/uploads/2022/07/terraza-300x110.png 300w, https://molino.cafe/wp-content/uploads/2022/07/terraza-1024x374.png 1024w, https://molino.cafe/wp-content/uploads/2022/07/terraza-768x281.png 768w, https://molino.cafe/wp-content/uploads/2022/07/terraza.png 1382w" sizes="(max-width: 300px) 100vw, 300px" style="width:100%;height:36.54%;max-width:1382px;" /></div>
 		</figure>
 	</div>
-<h2 style="color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_fadeIn fadeIn vc_custom_1657268882199" >FOOD MENU</h2></div></div></div></div>
+<h2 style="color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_fadeIn fadeIn vc_custom_1657268882199" id="FOOD">FOOD MENU</h2><a style="color: white; font-weight: bold;border: 1px solid white;padding: 10px;" href="#cart">Cart</a></div></div></div></div>
 
 <div id="SALADS" class="vc_row wpb_row vc_row-fluid"><div class="wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><h2 style="font-size: 28px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >INSALATE (SALADS)</h2><br>
 
-	<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a href="#" id="toggleButton" >BURRATA ALLA FRAGOLA</a></h2>
+	<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a href="#" id="toggleButton" onclick="addToCart('Burrata alla Fragola')" >BURRATA ALLA FRAGOLA</a></h2>
 	<center>
 		<div id="popupOverlay">
 			<div id="popupImageContainer">
@@ -318,16 +371,49 @@ body.custom-background { background-color: #0b2746; }
 	<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >23$</h3>
 
 
-	<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >CAPRESE</h2>
+	<div id="content" class="content">
+
+		<h2  class="popupTrigger" data-target="popupOverlay1"  style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" >CAPRESE</a></h2>
+		</div>
+
+		
+	</center>
 	<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(Roca,mushroom ,slices tomato,balsamic sauce,<br>buffles.) </h6>
 	<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >17$</h3>
+	<center>
+		<div id="popupOverlay1" class="popupOverlay">
+			<div class="popupImageContainer">
+				<img class="popupImage" src="BURRATA ALLA FRAGOLA.jpeg" alt="Image 1">
+				<br>
+				<button class="closeButton" data-target="popupOverlay1">Close</button>
+			</div>
+		</div>
+	</center>
 
 
-	<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >RUCOLA E POMODORI</h2>
+	<h2  class="popupTrigger" data-target="popupOverlay2"  style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="color: white;" href="#" id="toggleButton" onclick="addToCart('RUCOLA E POMODORI')" >RUCOLA E POMODORI</a></h2>
+	
+	<center>
+		<div id="popupOverlay2" class="popupOverlay">
+			<div class="popupImageContainer">
+				<img class="popupImage" src="BURRATA ALLA FRAGOLA.jpeg" alt="Image 2"><br>
+				<button class="closeButton" data-target="popupOverlay2">Close</button>
+			</div>
+		</div>
+	</center>
 	<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(Roca,mushroom,slices tomato,balsamic <br>sauce.)</h6>
 	<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >12$</h3>
 
-	<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >Caprino E Fragole</h2>
+	<h2 class="popupTrigger" data-target="popupOverlay3" style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a href="#" id="toggleButton" style="color: white;" onclick="addToCart('Caprino E Fragole')" >Caprino E Fragole</a></h2>
+	<center>
+		<div id="popupOverlay3" class="popupOverlay">
+			<div class="popupImageContainer">
+				<img class="popupImage" src="BURRATA ALLA FRAGOLA.jpeg" alt="Image 3"> <br>
+				<button class="closeButton" data-target="popupOverlay3">Close</button>
+			</div>
+		</div>
+		
+	</center>
 	<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">( )</h6>
 	<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >17$</h3>
 
@@ -338,7 +424,16 @@ body.custom-background { background-color: #0b2746; }
 		<h2 style="font-size: 28px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >ANTIPASTI (STARTERS)</h2><br>
 		
 
-		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >BRUSCHETTA AI POMODIRI</h2>
+		<h2 class="popupTrigger" data-target="popupOverlay3" style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('BRUSCHETTA AI POMODIRI')" >BRUSCHETTA AI POMODIRI</a></h2>
+		<center>
+			<div id="popupOverlay4" class="popupOverlay">
+				<div class="popupImageContainer">
+					<img class="popupImage" src="BURRATA ALLA FRAGOLA.jpeg" alt="Image 3"> <br>
+					<button class="closeButton" data-target="popupOverlay4">Close</button>
+				</div>
+			</div>
+			
+		</center>
 		<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(Bread with tomato cherries and sauce)</h6>
 		<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >10$</h3>
 		
@@ -346,21 +441,24 @@ body.custom-background { background-color: #0b2746; }
 		
 
 
-		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >FUNGHI SALTATI</h2>
+		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"  onclick="addToCart('FUNGHI SALTATI')"  ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('BRUSCHETTA AI POMODIRI')" >FUNGHI SALTATI</a></h2>
 		<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(Mushroom sautd with sauce)</h6>
 		<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >9$</h3>
 
 
-		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >PROSCIUTTO E MELONE</h2>
+		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" onclick="addToCart('PROSCIUTTO E MELONE')" >
+			<a style="text-decoration: none;color: white;" href="#" id="toggleButton">PROSCIUTTO E MELONE</a></h2>
 		<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(Backed potatos slices with sauce)</h6>
 		<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >17$</h3>
 
 
-		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >BRESAOLA E RUCOLA</h2>
+		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" onclick="addToCart('BRESAOLA E RUCOLA')" >
+			<a style="text-decoration: none;color: white;" href="#" id="toggleButton">BRESAOLA E RUCOLA</a></h2>
 		<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(Bresaola ham,roca,parmesan cheese)</h6>
 		<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >17$</h3>
 		
-		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >PARMIGIANA DI MELANZANE</h2>
+		<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" onclick="addToCart('PARMIGIANA DI MELANZANE')" >
+			<a style="text-decoration: none;color: white;" href="#" id="toggleButton">PARMIGIANA DI MELANZANE</a></h2>
 		<h6 style="text-align: center;font-size: 13.5px;font-family: serif;font-style: italic;">(eggplant baked in a dich with tomato sauce<br> and mozarella/parmesan)</h6>
 		<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >10$</h3>
 		
@@ -369,52 +467,54 @@ body.custom-background { background-color: #0b2746; }
 			<h2 style="font-size: 28px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >PRIMI PIATTI (PASTA)<Br></h2><br>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >SPAGHETTI AL POMODORO</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"  onclick="addToCart('SPAGHETTI AL POMODORO')" >
+				<a style="text-decoration: none;color: white;" href="#" id="toggleButton">SPAGHETTI AL POMODORO</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;font-style: italic;">(Spagheti with red sauce and <br> of basil)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >10$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >TAGLIATELLE BOLOGNESE</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" onclick="addToCart('TAGLIATELLE BOLOGNESE')" >
+				<a style="text-decoration: none;color: white;" href="#" id="toggleButton">TAGLIATELLE BOLOGNESE</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;font-style: italic;">(tagliatelle pasta with red sauce<br> and meat and bit of parmesan)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >15$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >PENNE ARRABIATA</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('Penne Arrabiata')" >PENNE ARRABIATA</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;font-style: italic;">(Penne with red sauce (little spicy)<Br>pepper flakes and parmesan)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >12$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >PENNE AI QUATRO FORMAGGI</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('Penne Ai quatro formaggi')" >PENNE AI QUATRO FORMAGGI</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;">(Penne with white sauce and<br>italian 4cheese)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >16$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >LINGUINI CARBONARA</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('LINGUINI CARBONARA')" >LINGUINI CARBONARA</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;font-style: italic;">(linguini pasta with eggs,black pepper,parmessan and pancetta(like bacon))</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >16$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >LINGUINI PESTO</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('LINGUINI Pesto')" >LINGUINI PESTO</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;font-style: italic;">(linguini with pesto sauce (a little<br> bit of creme freche))</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >16$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >FETTUCINI AL POLLO</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('Fetutcini Al Pollo')" >FETTUCINI AL POLLO</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;font-style: italic;">(fettucini pasta,chicken breast slices, mushroom slices,parmessan and creme freche)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >15$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >LINGUINI AL TARTUFFO NERO</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('LINGUINI AL TARTUFO NERO')" >LINGUINI AL TARTUFFO NERO</a></h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;">(linguini pasta with black truffle with a little bit of cream freche) </h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >20$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >RAVIOLI RICOTTA E SPINACI</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('Ravioli Riccota E SPINACI')" ></a>RAVIOLI RICOTTA E SPINACI</h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;">(ravioli with sauce rose and SPINACI)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown wpb_start_animation animated">15$</h3>
 			
 			
-			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" >RAVIOLI QUATRO FORMAGGI</h2>
+			<h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('Ravioli Quatro Fromaggi')" ></a>RAVIOLI QUATRO FORMAGGI</h2>
 			<h6 style="text-align: center;font-size:13.5px;font-family: serif;">(ravioli with white sauce and cheese)</h6>
 			<h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown" >12$</h3>
 
@@ -514,7 +614,14 @@ body.custom-background { background-color: #0b2746; }
 			</main>
 		</div>
 	</div>
-
+	<div id="cart" style="color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal">
+		<h2>Your Cart</h2>
+		<ul id="cartItems"></ul>
+		<button onclick="clearCart()">Clear Cart</button>
+		<a style="color: white;" href="#FOOD">Food</a> <br> <br>
+		<button id="sendToWhatsApp">Send to WhatsApp</button>
+	  </div>
+	  
 	
 	<footer id="colophon" class="site-footer">
 
@@ -563,15 +670,41 @@ var option = {"mystickyClass":".site-header","activationHeight":"0","disableWidt
 <script src='https://molino.cafe/wp-content/plugins/js_composer-5/assets/js/dist/js_composer_front.min.js?ver=6.10.0' id='wpb_composer_front_js-js'></script>
 <script src='https://molino.cafe/wp-content/plugins/js_composer-5/assets/lib/vc_waypoints/vc-waypoints.min.js?ver=6.10.0' id='vc_waypoints-js'></script>
 		<script>
-		    document.getElementById('toggleButton').addEventListener('click', function() {
-        var popup = document.getElementById('popupOverlay');
-        popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
-    });
 
-    document.getElementById('closeButton').addEventListener('click', function() {
-        var popup = document.getElementById('popupOverlay');
-        popup.style.display = 'none';
-    });
+
+	let cart = [];
+
+function addToCart(item) {
+  cart.push(item);
+  displayCart();
+}
+
+function displayCart() {
+  const cartItems = document.getElementById('cartItems');
+  cartItems.innerHTML = '';
+
+  cart.forEach((item) => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    cartItems.appendChild(li);
+  });
+}
+
+function clearCart() {
+  cart = [];
+  displayCart();
+}
+document.getElementById('sendToWhatsApp').onclick = function() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  const message = encodeURIComponent("Here are the items in my cart:\n" + cart.join("\n"));
+  const whatsappURL = `https://wa.me/?text=${message}`;
+  
+  window.open(whatsappURL, '_blank');
+};
 		</script>
 		
 	</body>
