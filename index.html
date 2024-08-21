@@ -700,7 +700,7 @@ document.getElementById('sendToWhatsApp').onclick = function() {
     return;
   }
 
-  const message = encodeURIComponent("Here are the items in my cart:\n" + cart.join("\n"));
+ const message = encodeURIComponent("order:\n" + cart.join("\n"));
   const whatsappURL = `https://wa.me/?text=${message}`;
   
   window.open(whatsappURL, '_blank');
