@@ -373,7 +373,7 @@ body.custom-background { background-color: #0b2746; }
 
 	<div id="content" class="content">
 
-		<h2  class="popupTrigger" data-target="popupOverlay1"  style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" >CAPRESE</a></h2>
+		<h2  class="popupTrigger" data-target="popupOverlay1"  style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" ><a style="text-decoration: none;color: white;" href="#" id="toggleButton" onclick="addToCart('Cparese')" >CAPRESE</a></h2>
 		</div>
 
 		
@@ -616,10 +616,13 @@ body.custom-background { background-color: #0b2746; }
 	</div>
 	<div id="cart" style="color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal">
 		<h2>Your Cart</h2>
-		<ul id="cartItems"></ul>
-		<button onclick="clearCart()">Clear Cart</button>
-		<a style="color: white;" href="#FOOD">Food</a> <br> <br>
-		<button id="sendToWhatsApp">Send to WhatsApp</button>
+		<ul id="cartItems"></ul><br>
+		
+		<button onclick="clearCart()" style="font-size: 15px;">Clear Cart</button><br><br>
+		<a style="color: white;border: 1px solid white;" href="#FOOD" >Food</a> <br> <br>
+		<label for="customMessage" style="color: #ffffff;font-family:Open Sans Condensed;font-weight:700;"></label><br>
+  <input type="number" id="customMessage" placeholder=" table number" style="padding: 5px; margin: 10px 0; width: 40%;"><br><br>
+		<button  id="sendToWhatsApp">Send to WhatsApp</button>
 	  </div>
 	  
 	
@@ -672,7 +675,7 @@ var option = {"mystickyClass":".site-header","activationHeight":"0","disableWidt
 		<script>
 
 
-	let cart = [];
+let cart = [];
 
 function addToCart(item) {
   cart.push(item);
@@ -683,25 +686,48 @@ function displayCart() {
   const cartItems = document.getElementById('cartItems');
   cartItems.innerHTML = '';
 
-  cart.forEach((item) => {
+  cart.forEach((item, index) => {
     const li = document.createElement('li');
     li.textContent = item;
+
+    // Create delete button
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.style.marginLeft = '5px';
+	deleteButton.style.fontSize = '10px';
+	deleteButton.style.padding = '8px';
+	
+    deleteButton.onclick = function() {
+      removeFromCart(index);
+    };
+
+    li.appendChild(deleteButton);
     cartItems.appendChild(li);
   });
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);  // Remove the item at the given index
+  displayCart();  // Update the cart display
 }
 
 function clearCart() {
   cart = [];
   displayCart();
 }
+
+// Function to send cart items and custom message to WhatsApp
 document.getElementById('sendToWhatsApp').onclick = function() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
 
- const message = encodeURIComponent("order:\n" + cart.join("\n"));
-  const whatsappURL = `https://wa.me/?text=${message}`;
+  const customMessage = document.getElementById('customMessage').value;
+  const cartMessage = "order::\n\n" + cart.join("\n");
+  const message = customMessage ? customMessage + "\n\n" + cartMessage : cartMessage;
+  
+  const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
   
   window.open(whatsappURL, '_blank');
 };
